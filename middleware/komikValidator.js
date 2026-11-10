@@ -16,7 +16,7 @@ const komikSchema = Joi.object({
 });
 
 const idSchema = Joi.object({
-
+    id: Joi.number().integer().positive().required()
 });
 
 function validateBody(schema) {
