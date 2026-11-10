@@ -1,4 +1,4 @@
-const joi = require('joi');
+const Joi = require('joi'); // Sudah diperbaiki jadi J besar
 
 function errorResponse(res, message, status, details = null) {
     return res.status(status).json({
@@ -11,18 +11,18 @@ function errorResponse(res, message, status, details = null) {
 
 const komikSchema = Joi.object({
     title: Joi.string().trim().min(1).max(255).required(),
-    description: Joi.string().trim().allow(null, '').optional(),
+    description: Joi.string().trim().allow(null, '').optional(), // Kutip miring sudah diganti kutip lurus
     author: Joi.string().trim().min(1).max(100).required()
 });
 
 const idSchema = Joi.object({
 
-})
+});
 
 function validateBody(schema) {
     return (req, res, next) => {
         const { error, value } = schema.validate(req.body, { 
-            abortEarly: false,
+            abortEarly: false, // <-- Koma yang sebelumnya kurang sudah ditambahkan
             convert: true,
             allowUnknown: false,
         });
